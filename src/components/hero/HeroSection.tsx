@@ -96,15 +96,6 @@ export default function HeroSection() {
                 <FileText className="w-4 h-4 text-green-primary" />
                 View Resume
               </motion.a>
-
-              <motion.a
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.98 }}
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-green-primary/50 text-text-muted hover:text-text-primary font-mono text-sm font-medium transition-all duration-300"
-              >
-                Contact Me
-              </motion.a>
             </motion.div>
 
             {/* Core Stats Row with Contextual Anchors */}
