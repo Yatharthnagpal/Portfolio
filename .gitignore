@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
+
+# Agent prompt files
+AGENTS.md
+CLAUDE.md
+Yatharth_Nagpal_Portfolio_Antigravity_Master_Prompt*.md
