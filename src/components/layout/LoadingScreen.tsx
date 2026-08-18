@@ -45,7 +45,7 @@ export default function LoadingScreen({
         {/* Monogram emblem */}
         <div className="relative mb-6 flex items-center justify-center w-20 h-20 rounded-2xl bg-bg-card border border-green-primary/30 shadow-[0_0_30px_rgba(34,197,94,0.15)]">
           <span className="font-display font-bold text-3xl text-green-glow tracking-tighter">
-            YN
+            NY
           </span>
           <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-green-primary to-green-glow opacity-20 blur-sm animate-pulse" />
         </div>
