@@ -1,34 +1,75 @@
 "use client";
 
+import { useState } from "react";
 import { projects } from "@/data/portfolio";
-import { Cpu, Sparkles, ArrowUpRight } from "lucide-react";
+import { Cpu, Sparkles, ArrowUpRight, Filter } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import TiltCard from "@/components/ui/TiltCard";
 import { getTechIcon } from "@/components/ui/BrandIcons";
 import { motion } from "framer-motion";
 
+const DOMAIN_TABS = [
+  { id: "all", label: "All Work" },
+  { id: "healthcare", label: "Healthcare AI" },
+  { id: "nlp-legal", label: "NLP & Legal AI" },
+  { id: "gnn-risk", label: "GNN & Risk Engine" },
+  { id: "data-scraping", label: "Data Engineering & Scraping" },
+] as const;
+
 export default function ProjectsSection() {
+  const [selectedDomain, setSelectedDomain] = useState<string>("all");
+
+  const filteredProjects =
+    selectedDomain === "all"
+      ? projects
+      : projects.filter((p) => p.domain === selectedDomain);
   return (
     <section id="work" className="py-24 relative">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         {/* Section Header */}
         <ScrollReveal direction="left">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="section-number">04 //</span>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-text-primary tracking-tight">
-              Selected <span className="text-green-glow">Work</span>
-            </h2>
-            <div className="h-px flex-1 bg-gradient-to-r from-green-primary/30 to-transparent" />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+            <div className="flex items-center gap-3">
+              <span className="section-number">04 //</span>
+              <h2 className="font-display font-bold text-3xl md:text-4xl text-text-primary tracking-tight">
+                Selected <span className="text-green-glow">Work</span>
+              </h2>
+              <div className="h-px flex-1 bg-gradient-to-r from-green-primary/30 to-transparent" />
+            </div>
           </div>
-          <p className="text-text-muted font-mono text-xs md:text-sm max-w-2xl mb-12">
+          <p className="text-text-muted font-mono text-xs md:text-sm max-w-2xl mb-8">
             End-to-end AI systems spanning healthcare diagnostics and legal intelligence — built from data pipeline to deployed inference.
           </p>
+
+          {/* Domain Filter Pills */}
+          <div className="flex flex-wrap items-center gap-2 mb-12">
+            <div className="flex items-center gap-1.5 font-mono text-xs text-text-muted pr-2">
+              <Filter className="w-3.5 h-3.5 text-green-primary" />
+              <span>Domain:</span>
+            </div>
+            {DOMAIN_TABS.map((tab) => {
+              const isActive = selectedDomain === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setSelectedDomain(tab.id)}
+                  className={`px-4 py-1.5 rounded-full font-mono text-xs transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "bg-green-primary text-bg-primary font-bold shadow-[0_0_15px_rgba(34,197,94,0.35)]"
+                      : "glass-card text-text-muted hover:text-text-primary hover:border-green-primary/30"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
         </ScrollReveal>
 
         {/* Projects Showcase Cards */}
         <div className="space-y-16">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <ScrollReveal key={project.id} delay={index * 0.15}>
               <TiltCard className="group rounded-3xl glass-card border border-green-primary/20 hover:border-green-primary/50 transition-colors duration-500 p-6 md:p-10 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
                 {/* Background Ambient Glow */}

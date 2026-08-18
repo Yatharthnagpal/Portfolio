@@ -21,15 +21,16 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yatharth Nagpal — AI & ML Systems Engineer | NY.Portfolio",
+  metadataBase: new URL("https://portfolio-two-ashy-qzoc8vj3e0.vercel.app"),
+  title: "Yatharth Nagpal — AI & ML Systems Engineer",
   description:
-    "AI & ML Systems Engineer building intelligent platforms, RAG pipelines, fine-tuned LLMs, and computer vision applications.",
+    "AI & ML Systems Engineer specializing in fine-tuning LLMs, RAG pipelines, computer vision models, and production web backends.",
   keywords: [
     "Yatharth Nagpal",
     "AI Systems Engineer",
     "ML Engineer",
     "Deep Learning",
-    "RAG",
+    "RAG Developer",
     "Full Stack AI Developer",
     "Portfolio",
   ],
@@ -44,7 +45,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Yatharth Nagpal — AI & ML Systems Engineer",
     description:
-      "AI & ML Systems Engineer building intelligent platforms, RAG pipelines, and deep learning systems.",
+      "AI & ML Systems Engineer building intelligent platforms, RAG pipelines, fine-tuned LLMs, and deep learning systems.",
+    url: "https://portfolio-two-ashy-qzoc8vj3e0.vercel.app",
+    siteName: "Yatharth Nagpal Portfolio",
     type: "website",
     locale: "en_US",
   },

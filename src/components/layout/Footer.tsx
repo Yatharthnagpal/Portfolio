@@ -7,7 +7,6 @@ import {
   LinkedinIcon,
   KaggleIcon,
   LeetCodeIcon,
-  CodolioIcon,
 } from "@/components/ui/Icons";
 
 export default function Footer() {
@@ -66,15 +65,6 @@ export default function Footer() {
             aria-label="LeetCode"
           >
             <LeetCodeIcon className="w-4 h-4" />
-          </a>
-          <a
-            href={personalInfo.codolio}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 rounded-lg glass-card hover:border-green-primary/40 text-text-muted hover:text-green-glow transition-all"
-            aria-label="Codolio"
-          >
-            <CodolioIcon className="w-4 h-4" />
           </a>
           <a
             href={`mailto:${personalInfo.email}`}

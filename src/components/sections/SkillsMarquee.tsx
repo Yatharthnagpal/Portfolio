@@ -22,10 +22,9 @@ export default function SkillsMarquee() {
       ? allSkills
       : allSkills.filter((s) => s.category === selectedCategory);
 
-  // Divide into two rows for dual alternating marquee tracks
-  const half = Math.ceil(filteredSkills.length / 2);
-  const row1 = filteredSkills.slice(0, half);
-  const row2 = filteredSkills.slice(half);
+  // Alternating split so both top and bottom rows get an even mix of AI/ML, Backend, Cloud, and Frontend
+  const row1 = filteredSkills.filter((_, idx) => idx % 2 === 0);
+  const row2 = filteredSkills.filter((_, idx) => idx % 2 === 1);
 
   // Duplicate for seamless infinite scrolling
   const row1Items = [...row1, ...row1, ...row1, ...row1];
@@ -71,7 +70,7 @@ export default function SkillsMarquee() {
       <div className="space-y-4 marquee-container">
         {/* Row 1 — Left scroll */}
         <div className="flex overflow-hidden select-none">
-          <div className="flex gap-4 animate-[marquee_60s_linear_infinite] whitespace-nowrap marquee-track">
+          <div className="flex gap-4 animate-[marquee_60s_linear_infinite] whitespace-nowrap marquee-track transform-gpu will-change-transform">
             {row1Items.map((item, idx) => (
               <div
                 key={`r1-${idx}`}
@@ -93,7 +92,7 @@ export default function SkillsMarquee() {
 
         {/* Row 2 — Right scroll */}
         <div className="flex overflow-hidden select-none">
-          <div className="flex gap-4 animate-[marquee-reverse_65s_linear_infinite] whitespace-nowrap marquee-track">
+          <div className="flex gap-4 animate-[marquee-reverse_65s_linear_infinite] whitespace-nowrap marquee-track transform-gpu will-change-transform">
             {row2Items.map((item, idx) => (
               <div
                 key={`r2-${idx}`}

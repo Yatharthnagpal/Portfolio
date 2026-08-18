@@ -10,7 +10,6 @@ import {
   LinkedinIcon,
   KaggleIcon,
   LeetCodeIcon,
-  CodolioIcon,
 } from "@/components/ui/Icons";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import TiltCard from "@/components/ui/TiltCard";
@@ -91,17 +90,6 @@ export default function AboutSection() {
                     <LeetCodeIcon className="w-4 h-4 text-green-primary" />
                     LeetCode
                   </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    href={personalInfo.codolio}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hover:border-green-primary/40 text-text-primary font-mono text-xs transition-all"
-                  >
-                    <CodolioIcon className="w-4 h-4 text-green-primary" />
-                    Codolio
-                  </motion.a>
                 </div>
 
                 {/* Primary Get in Touch CTA on Next Line */}
@@ -131,7 +119,7 @@ export default function AboutSection() {
                 {/* Tech HUD Corner Accents */}
                 <div className="absolute top-4 left-4 z-20 font-mono text-[10px] text-green-glow/80 flex items-center gap-1.5 bg-bg-primary/30 backdrop-blur-xl px-2.5 py-1 rounded-md border border-green-primary/25">
                   <Terminal className="w-3 h-3 text-green-primary" />
-                  <span>[01 // DEV_PORTRAIT]</span>
+                  <span>[PROFILE_SNAPSHOT]</span>
                 </div>
 
                 {/* Image Container with Framing & Glow */}

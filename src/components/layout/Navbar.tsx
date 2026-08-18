@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { navLinks, personalInfo } from "@/data/portfolio";
-import { Menu, X, Terminal, ArrowUpRight } from "lucide-react";
+import { Menu, X, Terminal, ArrowUpRight, FileText } from "lucide-react";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("top");
@@ -11,36 +11,45 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-      setScrollProgress(progress);
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const totalHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+          setScrollProgress(progress);
+          setIsScrolled(window.scrollY > 50);
 
-      // Section tracking
-      const sections = navLinks
-        .map((link) => link.href.substring(1))
-        .filter(Boolean);
+          // Section tracking
+          const sections = navLinks
+            .map((link) => link.href.substring(1))
+            .filter(Boolean);
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionId = sections[i];
-        if (sectionId === "top") continue;
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 200) {
-            setActiveSection(sectionId);
-            return;
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const sectionId = sections[i];
+            if (sectionId === "top") continue;
+            const el = document.getElementById(sectionId);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              if (rect.top <= 220) {
+                setActiveSection(sectionId);
+                ticking = false;
+                return;
+              }
+            }
           }
-        }
-      }
-      if (window.scrollY < 200) {
-        setActiveSection("top");
+          if (window.scrollY < 200) {
+            setActiveSection("top");
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -98,10 +107,19 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Action: Get in Touch / Resume */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right Action: Resume & Contact */}
+          <div className="hidden md:flex items-center gap-2.5">
             <a
-              href={`mailto:${personalInfo.email}`}
+              href={personalInfo.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono text-text-primary font-semibold glass-card border border-green-primary/30 hover:border-green-primary hover:text-green-glow rounded-full transition-all duration-200"
+            >
+              <FileText className="w-3.5 h-3.5 text-green-primary" />
+              Resume
+            </a>
+            <a
+              href="#contact"
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-mono text-bg-primary font-semibold bg-green-primary hover:bg-green-glow rounded-full shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(74,222,128,0.5)] transition-all duration-200 transform hover:-translate-y-0.5"
             >
               Contact Me

@@ -38,6 +38,7 @@ export default function GithubSection() {
   const [data, setData] = useState<GitHubContributionData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
+  const [refreshedNotice, setRefreshedNotice] = useState<boolean>(false);
   const [hoveredDay, setHoveredDay] = useState<{
     day: ContributionDay;
     x: number;
@@ -52,6 +53,8 @@ export default function GithubSection() {
       if (!res.ok) throw new Error("Failed to load");
       const json: GitHubContributionData = await res.json();
       setData(json);
+      setRefreshedNotice(true);
+      setTimeout(() => setRefreshedNotice(false), 2500);
     } catch (err) {
       console.error(err);
       setError(true);
@@ -244,6 +247,11 @@ export default function GithubSection() {
               </div>
 
               <div className="flex items-center gap-3">
+                {refreshedNotice && (
+                  <span className="font-mono text-[11px] text-green-glow animate-fade-in bg-green-primary/10 border border-green-primary/30 px-2.5 py-1 rounded-full">
+                    Updated!
+                  </span>
+                )}
                 <button
                   onClick={fetchContributions}
                   disabled={loading}
@@ -262,6 +270,11 @@ export default function GithubSection() {
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
+            </div>
+
+            {/* Mobile Scroll Hint */}
+            <div className="md:hidden font-mono text-[10px] text-green-glow/70 text-center mb-3 flex items-center justify-center gap-1">
+              <span>← Scroll horizontally to view full activity calendar →</span>
             </div>
 
             {/* Heatmap Grid Section */}
@@ -322,15 +335,8 @@ export default function GithubSection() {
                             const colorClass = getCellColor(day.level, day.count);
 
                             return (
-                              <motion.div
+                              <div
                                 key={day.date}
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{
-                                  delay: (wIdx * 7 + dIdx) * 0.0008,
-                                  type: "spring",
-                                  stiffness: 300,
-                                }}
                                 onMouseEnter={(e) => {
                                   const rect = e.currentTarget.getBoundingClientRect();
                                   setHoveredDay({
@@ -340,7 +346,7 @@ export default function GithubSection() {
                                   });
                                 }}
                                 onMouseLeave={() => setHoveredDay(null)}
-                                className={`w-[11px] h-[11px] rounded-[2.5px] border transition-all duration-150 cursor-pointer ${colorClass}`}
+                                className={`w-[11px] h-[11px] rounded-[2.5px] border transition-transform duration-150 cursor-pointer ${colorClass}`}
                               />
                             );
                           })}

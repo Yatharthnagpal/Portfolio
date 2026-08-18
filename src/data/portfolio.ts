@@ -26,6 +26,7 @@ export interface Project {
   title: string;
   subtitle: string;
   category: string;
+  domain: "healthcare" | "nlp-legal" | "gnn-risk" | "data-scraping";
   period: string;
   description: string;
   highlights: string[];
@@ -77,7 +78,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/yatharthnagpal",
   kaggle: "https://www.kaggle.com/yatharth22bce11044",
   leetcode: "https://leetcode.com/u/yatharthnagpal",
-  codolio: "https://codolio.com/profile/yatharthnagpal",
+  resume: "/resume.pdf",
   tagline:
     "I architect end-to-end AI & ML systems — fine-tuning LLMs, building RAG pipelines, deploying computer vision models, and engineering robust web backends.",
   availabilityBadge: "Available for AI / ML & Applied AI roles",
@@ -87,10 +88,30 @@ export const personalInfo = {
 // Hero Stats
 // ---------------------------------------------------------------------------
 export const heroStats = [
-  { value: "8+", label: "End-to-End AI & ML Models Shipped" },
-  { value: "186th", label: "Global ML Rank (Zelestra × AWS)" },
-  { value: "89%", label: "Peak Diagnostic Accuracy" },
-  { value: "500K+", label: "ML Records Processed" },
+  {
+    value: "8+",
+    label: "End-to-End AI & ML Systems",
+    context: "Multi-Modal, RAG & CV",
+    link: "#work",
+  },
+  {
+    value: "186th",
+    label: "Global Rank (AWS Ascend)",
+    context: "Zelestra × AWS ML Challenge",
+    link: "#experience",
+  },
+  {
+    value: "89%",
+    label: "Peak Diagnostic Accuracy",
+    context: "MedAI Pro Clinical Platform",
+    link: "#work",
+  },
+  {
+    value: "500K+",
+    label: "ML Records Processed",
+    context: "LoneKnight Airflow Pipelines",
+    link: "#experience",
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -121,6 +142,7 @@ export const projects: Project[] = [
     title: "MedAI Pro",
     subtitle: "AI-Powered Clinical Decision Support System",
     category: "Healthcare AI & Deep Learning",
+    domain: "healthcare",
     period: "Jul 2025 – Nov 2025",
     description:
       "A multi-modal medical diagnostics platform integrating 5 independent diagnostic modules across brain MRI, chest X-ray, retinal scan, skin lesion, and ICU sepsis datasets.",
@@ -169,6 +191,7 @@ export const projects: Project[] = [
     title: "LegalAI",
     subtitle: "AI Legal Assistant for Contract Analysis & Drafting",
     category: "Legal Intelligence & NLP",
+    domain: "nlp-legal",
     period: "Jan 2026 – May 2026",
     description:
       "An AI-powered legal intelligence system with 29 contract analysis and drafting features for risk detection, compliance validation, and AI-assisted contract generation aligned with Indian legal frameworks.",
@@ -217,6 +240,7 @@ export const projects: Project[] = [
     title: "GNN Subsidy Fraud Detector",
     subtitle: "Graph Neural Network for Agriculture Subsidy Anomaly Detection",
     category: "Graph Neural Networks & ML",
+    domain: "gnn-risk",
     period: "Nov 2025 – Mar 2026",
     description:
       "A specialized Graph Neural Network (GCN / GraphSAGE) framework designed to detect complex collusive fraud patterns and illegal claims across agricultural subsidy distribution networks.",
@@ -263,6 +287,7 @@ export const projects: Project[] = [
     title: "EcomGuard Fraud Analytics",
     subtitle: "E-Commerce Intelligence & Fraud Detection Engine",
     category: "Financial AI & Risk Scoring",
+    domain: "gnn-risk",
     period: "Feb 2026 – May 2026",
     description:
       "An automated machine learning insights platform that analyzes daily e-commerce profits, product popularity trends, and identifies high-risk fraudulent transactions.",
@@ -309,6 +334,7 @@ export const projects: Project[] = [
     title: "FBI Cyber Threat Intelligence Scraper",
     subtitle: "Automated Cyber Most Wanted Profiling & Data Pipeline",
     category: "Cyber Threat Intelligence & Scraping",
+    domain: "data-scraping",
     period: "Sep 2025 – Dec 2025",
     description:
       "An automated threat intelligence scraper collecting detailed cybercriminal metadata from the FBI Cyber's Most Wanted directory for automated profile structuring and risk intelligence.",
@@ -354,6 +380,7 @@ export const projects: Project[] = [
     title: "AI Customer Support Bot",
     subtitle: "Intelligent Conversational Agent & Knowledge Retrieval",
     category: "Conversational AI & LLMs",
+    domain: "nlp-legal",
     period: "Aug 2025 – Oct 2025",
     description:
       "An automated AI support agent leveraging NLP intent recognition and RAG document embeddings to resolve complex user inquiries with contextual responses.",
@@ -402,10 +429,10 @@ export const experiences: Experience[] = [
     id: "galcare",
     type: "work",
     role: "Full Stack Developer (Freelance)",
-    organization: "Galcare",
+    organization: "Galcare Pharmaceuticals — Jaipur, Rajasthan",
     period: "Jun 2026 – Aug 2026",
     highlights: [
-      "Architected and developed a high-performance full-stack web platform for Galcare from scratch.",
+      "Architected and developed a high-performance full-stack web platform for Galcare Pharmaceuticals from scratch.",
       "Engineered dynamic UI components, responsive layouts, and interactive patient/client intake workflows.",
       "Built backend API services, database schemas, and optimized frontend asset delivery for peak performance.",
       "Managed full product lifecycle — from client requirements gathering to cloud deployment and SEO optimization.",
@@ -424,7 +451,7 @@ export const experiences: Experience[] = [
     id: "loneknight",
     type: "work",
     role: "Data Science Intern",
-    organization: "LoneKnight Productions",
+    organization: "LoneKnight Productions — Bhopal, MP",
     period: "Jan 2026 – Apr 2026",
     highlights: [
       "Designed and deployed 3+ end-to-end ML pipelines for predictive analytics using Python, Pandas, and Scikit-learn.",

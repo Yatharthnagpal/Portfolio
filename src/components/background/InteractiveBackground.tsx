@@ -11,14 +11,17 @@ export default function InteractiveBackground() {
   const animFrameRef = useRef<number>(0);
 
   const initParticles = useCallback((width: number, height: number) => {
-    const count = Math.min(80, Math.floor((width * height) / 15000));
+    const isMobile = width < 768;
+    const count = isMobile
+      ? 20
+      : Math.min(45, Math.floor((width * height) / 25000));
     particlesRef.current = Array.from({ length: count }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      size: Math.random() * 1.5 + 0.5,
-      alpha: Math.random() * 0.4 + 0.1,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      size: Math.random() * 1.4 + 0.6,
+      alpha: Math.random() * 0.35 + 0.1,
     }));
   }, []);
 
@@ -29,7 +32,7 @@ export default function InteractiveBackground() {
     if (!ctx) return;
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio, 2);
+      const dpr = Math.min(window.devicePixelRatio, 1.5);
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       canvas.style.width = `${window.innerWidth}px`;
@@ -76,10 +79,10 @@ export default function InteractiveBackground() {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 200) {
-          const force = (200 - dist) / 200;
-          p.vx -= (dx / dist) * force * 0.02;
-          p.vy -= (dy / dist) * force * 0.02;
+        if (dist < 180) {
+          const force = (180 - dist) / 180;
+          p.vx -= (dx / dist) * force * 0.015;
+          p.vy -= (dy / dist) * force * 0.015;
         }
 
         p.x += p.vx;
@@ -104,25 +107,14 @@ export default function InteractiveBackground() {
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const d = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
-          if (d < 120) {
+          if (d < 110) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(74, 222, 128, ${0.08 * (1 - d / 120)})`;
+            ctx.strokeStyle = `rgba(74, 222, 128, ${0.07 * (1 - d / 110)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
-        }
-      }
-
-      // Subtle dot grid
-      ctx.fillStyle = "rgba(74, 222, 128, 0.03)";
-      const gridSize = 60;
-      for (let x = 0; x < w; x += gridSize) {
-        for (let y = 0; y < h; y += gridSize) {
-          ctx.beginPath();
-          ctx.arc(x, y, 0.5, 0, Math.PI * 2);
-          ctx.fill();
         }
       }
 
@@ -152,7 +144,7 @@ export default function InteractiveBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 pointer-events-none"
+      className="fixed inset-0 z-0 pointer-events-none transform-gpu bg-[radial-gradient(rgba(74,222,128,0.04)_1px,transparent_1px)] [background-size:60px_60px]"
       aria-hidden="true"
     />
   );

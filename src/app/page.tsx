@@ -21,7 +21,7 @@ const Background3D = dynamic(() => import("@/components/3d/Background3D"), {
 });
 
 export default function Home() {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   return (
     <>

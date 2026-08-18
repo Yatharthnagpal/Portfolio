@@ -98,7 +98,7 @@ const orbitalIcons: OrbitalIcon[] = [
 
 export default function OrbitalTechIcons() {
   return (
-    <div className="absolute inset-0 pointer-events-none z-30 overflow-visible">
+    <div className="hidden md:block absolute inset-0 pointer-events-none z-30 overflow-visible">
       {orbitalIcons.map((item) => (
         <motion.div
           key={item.name}

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { personalInfo, heroStats, typingRoles } from "@/data/portfolio";
 import TypeWriter from "./TypeWriter";
 import OrbitalTechIcons from "./OrbitalTechIcons";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, FileText } from "lucide-react";
 
 const NeuralCore = dynamic(() => import("../3d/NeuralCore"), {
   ssr: false,
@@ -73,7 +73,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-4 pt-2"
+              className="flex flex-wrap items-center gap-3 pt-2"
             >
               <motion.a
                 whileHover={{ scale: 1.04 }}
@@ -88,14 +88,26 @@ export default function HeroSection() {
               <motion.a
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.98 }}
-                href={`mailto:${personalInfo.email}`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-green-primary/50 text-text-primary font-mono text-sm font-medium transition-all duration-300"
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card border border-green-primary/30 hover:border-green-primary hover:text-green-glow text-text-primary font-mono text-sm font-semibold transition-all duration-300"
+              >
+                <FileText className="w-4 h-4 text-green-primary" />
+                View Resume
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.98 }}
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-green-primary/50 text-text-muted hover:text-text-primary font-mono text-sm font-medium transition-all duration-300"
               >
                 Contact Me
               </motion.a>
             </motion.div>
 
-            {/* Core Stats Row */}
+            {/* Core Stats Row with Contextual Anchors */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -103,20 +115,27 @@ export default function HeroSection() {
               className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-8 border-t border-green-primary/10"
             >
               {heroStats.map((stat, idx) => (
-                <motion.div
+                <motion.a
                   key={stat.label}
+                  href={stat.link}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.5 + idx * 0.1 }}
-                  className="space-y-1"
+                  className="space-y-1 p-3 rounded-xl glass-card border border-green-primary/10 hover:border-green-primary/40 transition-all duration-200 group cursor-pointer"
                 >
-                  <div className="font-display font-bold text-2xl sm:text-3xl text-green-glow">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-green-glow group-hover:text-white transition-colors flex items-center justify-between">
                     {stat.value}
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-green-primary transition-opacity" />
                   </div>
-                  <div className="font-mono text-[11px] text-text-muted uppercase tracking-wider">
+                  <div className="font-mono text-[11px] text-text-primary font-medium leading-tight">
                     {stat.label}
                   </div>
-                </motion.div>
+                  {stat.context && (
+                    <div className="font-mono text-[10px] text-green-glow/80 opacity-80">
+                      {stat.context}
+                    </div>
+                  )}
+                </motion.a>
               ))}
             </motion.div>
           </div>
