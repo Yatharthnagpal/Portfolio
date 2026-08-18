@@ -79,7 +79,7 @@ export default function Navbar() {
               NY
             </div>
             <span className="hidden sm:inline font-mono text-xs font-semibold text-text-primary group-hover:text-green-glow transition-colors">
-              NY.Portfolio
+              .Portfolio
             </span>
           </a>
 
