@@ -65,9 +65,8 @@ export default function Navbar() {
 
       {/* Main Header / Navigation */}
       <header
-        className={`fixed top-3 left-0 right-0 z-40 px-4 md:px-8 transition-all duration-300 ${
-          isScrolled ? "py-2" : "py-4"
-        }`}
+        className={`fixed top-3 left-0 right-0 z-40 px-4 md:px-8 transition-all duration-300 ${isScrolled ? "py-2" : "py-4"
+          }`}
       >
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           {/* Logo / Monogram */}
@@ -95,11 +94,10 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-1.5 text-xs font-mono tracking-wide rounded-full transition-all duration-200 ${
-                    isActive
+                  className={`relative px-4 py-1.5 text-xs font-mono tracking-wide rounded-full transition-all duration-200 ${isActive
                       ? "text-green-glow font-medium bg-green-primary/10 border border-green-primary/30 shadow-[0_0_12px_rgba(34,197,94,0.15)]"
                       : "text-text-muted hover:text-text-primary hover:bg-white/5"
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </a>
