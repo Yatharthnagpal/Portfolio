@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio-two-ashy-qzoc8vj3e0.vercel.app"),
+  metadataBase: new URL("https://ny-portfolio-ai.vercel.app"),
   title: "Yatharth Nagpal — AI & ML Systems Engineer",
   description:
     "AI & ML Systems Engineer specializing in fine-tuning LLMs, RAG pipelines, computer vision models, and production web backends.",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "Yatharth Nagpal — AI & ML Systems Engineer",
     description:
       "AI & ML Systems Engineer building intelligent platforms, RAG pipelines, fine-tuned LLMs, and deep learning systems.",
-    url: "https://portfolio-two-ashy-qzoc8vj3e0.vercel.app",
+    url: "https://ny-portfolio-ai.vercel.app",
     siteName: "Yatharth Nagpal Portfolio",
     type: "website",
     locale: "en_US",

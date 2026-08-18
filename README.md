@@ -2,7 +2,7 @@
 
 > **AI & ML Systems Engineer** — Fine-Tuning LLMs, RAG Pipelines, Multi-Modal Computer Vision & Production Engineering.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-two-ashy-qzoc8vj3e0.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ny-portfolio-ai.vercel.app)
 [![Tech Stack](https://img.shields.io/badge/Stack-Next.js_16_|_TypeScript_|_Tailwind_|_Framer_Motion-059669?style=for-the-badge)](https://nextjs.org)
 [![GitHub](https://img.shields.io/badge/GitHub-Yatharthnagpal-181717?style=for-the-badge&logo=github)](https://github.com/Yatharthnagpal)
 
@@ -12,7 +12,7 @@
 
 **NY.Portfolio** is a high-performance, futuristic portfolio website designed for an **AI & ML Systems Engineer**. It features interactive 3D particle nodes, dynamic system architecture charts, real-time GitHub contribution heatmaps, and a cyberpunk terminal aesthetic.
 
-- 🌐 **Live Website**: [https://portfolio-two-ashy-qzoc8vj3e0.vercel.app](https://portfolio-two-ashy-qzoc8vj3e0.vercel.app)
+- 🌐 **Live Website**: [https://ny-portfolio-ai.vercel.app](https://ny-portfolio-ai.vercel.app)
 - 👤 **Developer**: Yatharth Nagpal ([@Yatharthnagpal](https://github.com/Yatharthnagpal))
 - 📍 **Location**: New Delhi, India
 
@@ -87,7 +87,6 @@ To run this portfolio locally on your machine:
 - 💼 **LinkedIn**: [yatharthnagpal](https://www.linkedin.com/in/yatharthnagpal)
 - 🏆 **Kaggle**: [yatharth22bce11044](https://www.kaggle.com/yatharth22bce11044)
 - ⚡ **LeetCode**: [yatharthnagpal](https://leetcode.com/u/yatharthnagpal)
-- 📊 **Codolio**: [yatharthnagpal](https://codolio.com/profile/yatharthnagpal)
 
 ---
 
