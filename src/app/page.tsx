@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import InteractiveBackground from "@/components/background/InteractiveBackground";
 import CursorGlow from "@/components/background/CursorGlow";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 import Navbar from "@/components/layout/Navbar";
@@ -15,8 +14,7 @@ import GithubSection from "@/components/sections/GithubSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 
-// Dynamically import 3D Background scene for performance & hydration safety
-const Background3D = dynamic(() => import("@/components/3d/Background3D"), {
+const RideExperience = dynamic(() => import("@/components/experience/RideExperience"), {
   ssr: false,
 });
 
@@ -26,8 +24,7 @@ export default function Home() {
   return (
     <>
       <LoadingScreen onComplete={() => setLoaded(true)} />
-      <InteractiveBackground />
-      <Background3D />
+      <RideExperience />
       <CursorGlow />
 
       <div className={`relative z-10 transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
