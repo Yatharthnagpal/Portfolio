@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type MutableRefObject } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Environment, Float, PerspectiveCamera, Sparkles } from "@react-three/drei";
@@ -13,7 +13,9 @@ const checkpoints = [
   { at: 0.86, id: "05", label: "FINISH", sub: "CONTACT" },
 ];
 
-function Road({ progress }: { progress: React.MutableRefObject<number> }) {
+type ProgressRef = MutableRefObject<number>;
+
+function Road({ progress }: { progress: ProgressRef }) {
   const group = useRef<THREE.Group>(null);
   const stripes = useMemo(() => Array.from({ length: 28 }, (_, i) => i), []);
 
@@ -46,7 +48,7 @@ function Road({ progress }: { progress: React.MutableRefObject<number> }) {
   );
 }
 
-function Bike({ progress }: { progress: React.MutableRefObject<number> }) {
+function Bike({ progress }: { progress: ProgressRef }) {
   const group = useRef<THREE.Group>(null);
   const wheelA = useRef<THREE.Mesh>(null);
   const wheelB = useRef<THREE.Mesh>(null);
@@ -123,7 +125,7 @@ function Bike({ progress }: { progress: React.MutableRefObject<number> }) {
   );
 }
 
-function EnvironmentMotion({ progress }: { progress: React.MutableRefObject<number> }) {
+function EnvironmentMotion({ progress }: { progress: ProgressRef }) {
   const group = useRef<THREE.Group>(null);
   useFrame((_, delta) => {
     if (!group.current) return;
@@ -149,7 +151,7 @@ function EnvironmentMotion({ progress }: { progress: React.MutableRefObject<numb
   );
 }
 
-function Scene({ progress }: { progress: React.MutableRefObject<number> }) {
+function Scene({ progress }: { progress: ProgressRef }) {
   const { camera } = useThree();
   useFrame((_, delta) => {
     const p = progress.current;
